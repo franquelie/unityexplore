@@ -1,11 +1,6 @@
 using System.Collections;
-<<<<<<< HEAD
 using System.Collections.Generic; // using Unity.Multiplayer.Center.Common.Analytics;
 using UnityEditor.UIElements;
-=======
-using System.Collections.Generic;
-using UnityEditor.UIElements; 
->>>>>>> c6a31a1e0535464cb08507240a9313dfcfd5d55d
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -26,7 +21,7 @@ public class PlayerController : MonoBehaviour
             animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    public void HandleUpdate()
     {
         if (!isMoving)
         {
@@ -70,7 +65,7 @@ public class PlayerController : MonoBehaviour
         var collider = Physics2D.OverlapCircle(interactPos, 0.2f, interactableLayer);
         if (collider != null)
         {
-            Debug.Log("there is an NPC here!");
+            collider.GetComponent<Interactable>()?.Interact();
         }
 
     }
